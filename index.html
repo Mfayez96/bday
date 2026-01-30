@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday S! 🎉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', 'Cairo', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff6b9d, #c06c84, #6c5b7b, #355c7d);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Password Screen */
+        #password-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        #password-screen h2 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #password-input {
+            padding: 15px 25px;
+            font-size: 1.2em;
+            border: 3px solid #ff6b9d;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        #password-btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            background: linear-gradient(45deg, #ff6b9d, #c06c84);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            font-weight: bold;
+        }
+
+        #password-btn:hover {
+            transform: scale(1.1);
+        }
+
+        #error-msg {
+            color: #ffcccc;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* Main Content */
+        #main-content {
+            display: none;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Dripping paint effect */
+        .drip {
+            position: absolute;
+            width: 3px;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.6));
+            animation: dripping 3s infinite;
+        }
+
+        @keyframes dripping {
+            0% { height: 0; }
+            50% { height: 100px; }
+            100% { height: 0; }
+        }
+
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            font-size: 2.5em;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Floating images */
+        .floating-image {
+            position: absolute;
+            width: 120px;
+            height: auto;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.3));
+            border-radius: 10px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        /* Text messages */
+        .message {
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        /* Center piece */
+        .center-piece {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .center-piece h1 {
+            font-size: 4em;
+            color: white;
+            font-family: 'Pacifico', cursive;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+            animation: rainbow 5s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { color: #ff6b9d; }
+            25% { color: #ffd93d; }
+            50% { color: #6bcf7f; }
+            75% { color: #4d9de0; }
+            100% { color: #ff6b9d; }
+        }
+
+        .age-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 2em;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+
+        /* Specific positioning for elements */
+        .element1 { top: 10%; left: 15%; animation-delay: 0s; }
+        .element2 { top: 20%; right: 10%; animation-delay: 1s; }
+        .element3 { bottom: 15%; left: 20%; animation-delay: 2s; }
+        .element4 { bottom: 25%; right: 15%; animation-delay: 1.5s; }
+        .element5 { top: 40%; left: 5%; animation-delay: 0.5s; }
+        .element6 { top: 35%; right: 8%; animation-delay: 2.5s; }
+        .element7 { top: 60%; left: 12%; animation-delay: 1.8s; }
+        .element8 { top: 70%; right: 18%; animation-delay: 0.8s; }
+        .element9 { top: 15%; left: 45%; animation-delay: 2.2s; }
+        .element10 { bottom: 30%; left: 8%; animation-delay: 1.3s; }
+        .element11 { bottom: 10%; right: 8%; animation-delay: 0.3s; }
+        .element12 { top: 50%; right: 20%; animation-delay: 2.8s; }
+        .element13 { top: 25%; left: 35%; animation-delay: 1.1s; }
+        .element14 { bottom: 40%; right: 30%; animation-delay: 1.9s; }
+        .element15 { top: 80%; left: 40%; animation-delay: 0.6s; }
+        .element16 { top: 55%; left: 30%; animation-delay: 1.4s; }
+        .element17 { bottom: 50%; right: 12%; animation-delay: 2.1s; }
+        .element18 { top: 45%; right: 35%; animation-delay: 0.9s; }
+        .element19 { bottom: 35%; left: 40%; animation-delay: 1.7s; }
+        .element20 { top: 32%; left: 8%; animation-delay: 2.3s; }
+        .element21 { bottom: 45%; right: 22%; animation-delay: 1.2s; }
+        .element22 { top: 65%; right: 5%; animation-delay: 0.4s; }
+        .element23 { bottom: 20%; left: 45%; animation-delay: 1.6s; }
+        
+        .img1 { top: 8%; left: 5%; animation-delay: 1.0s; }
+
+        .msg1 { top: 8%; left: 25%; font-size: 1.8em; }
+        .msg2 { top: 18%; right: 20%; font-size: 2em; direction: rtl; font-family: 'Cairo', sans-serif; }
+        .msg3 { bottom: 12%; left: 30%; font-size: 1.6em; }
+        .msg4 { bottom: 20%; right: 25%; font-size: 1.9em; direction: rtl; font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body>
+    <!-- Password Screen -->
+    <div id="password-screen">
+        <h2>🎂 Enter the Magic Words 🎂</h2>
+        <input type="password" id="password-input" placeholder="Password..." />
+        <button id="password-btn">Enter</button>
+        <p id="error-msg">Wrong password! Try again 💕</p>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Dripping paint effect -->
+        <div class="drip" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="drip" style="left: 25%; animation-delay: 0.5s;"></div>
+        <div class="drip" style="left: 40%; animation-delay: 1s;"></div>
+        <div class="drip" style="left: 55%; animation-delay: 1.5s;"></div>
+        <div class="drip" style="left: 70%; animation-delay: 0.7s;"></div>
+        <div class="drip" style="left: 85%; animation-delay: 1.2s;"></div>
+
+        <!-- Center Piece -->
+        <div class="center-piece">
+            <h1>Happy Birthday S! 🎉</h1>
+            <div class="age-badge">✨ Spiritual Age: 22 ✨</div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-element element1">🍰</div>
+        <div class="floating-element element2">🍔</div>
+        <div class="floating-element element3">🐈‍⬛</div>
+        <div class="floating-element element4">👰</div>
+        <div class="floating-element element5">🐱</div>
+        <div class="floating-element element6">🍰</div>
+        <div class="floating-element element7">🎂</div>
+        <div class="floating-element element8">🐈‍⬛</div>
+        <div class="floating-element element9">💕</div>
+        <div class="floating-element element10">🍔</div>
+        <div class="floating-element element11">🎉</div>
+        <div class="floating-element element12">🐱</div>
+        <div class="floating-element element13">✨</div>
+        <div class="floating-element element14">👰</div>
+        <div class="floating-element element15">🎊</div>
+        <div class="floating-element element16">🎂😷</div>
+        <div class="floating-element element17">🦸‍♀️</div>
+        <div class="floating-element element18">🦸‍♀️</div>
+        <div class="floating-element element19">🦸‍♀️</div>
+        <div class="floating-element element20">🐱‍👤</div>
+        <div class="floating-element element21">🐱‍👤</div>
+        <div class="floating-element element22">🖤🐈‍⬛</div>
+        <div class="floating-element element23">🖤🐈‍⬛</div>
+
+        <!-- Floating Images -->
+        <img src="Catwoman3.JPG" alt="Catwoman" class="floating-image img1">
+
+        <!-- Messages -->
+        <div class="message msg1">Love you S 💖</div>
+        <div class="message msg2">ثانكيو بيب 🌟</div>
+        <div class="message msg3">Hottest person ever 🔥</div>
+        <div class="message msg4">كل عام و أنتي احلى و أجمل S 🎂</div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="background-music" loop>
+        <source src="DancingQueen.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const correctPassword = "LoveUSaronte";
+        const passwordScreen = document.getElementById('password-screen');
+        const mainContent = document.getElementById('main-content');
+        const passwordInput = document.getElementById('password-input');
+        const passwordBtn = document.getElementById('password-btn');
+        const errorMsg = document.getElementById('error-msg');
+        const bgMusic = document.getElementById('background-music');
+
+        function checkPassword() {
+            if (passwordInput.value === correctPassword) {
+                passwordScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+                
+                // Play music
+                bgMusic.play().catch(error => {
+                    console.log("Audio autoplay was prevented:", error);
+                });
+            } else {
+                errorMsg.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        }
+
+        passwordBtn.addEventListener('click', checkPassword);
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // Hide error message when typing
+        passwordInput.addEventListener('input', function() {
+            errorMsg.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
