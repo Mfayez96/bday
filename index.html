@@ -365,6 +365,9 @@
 
     <!-- Main Content -->
     <div id="main-content">
+        <!-- Music Control Button -->
+        <button id="music-toggle" class="music-control">🔊</button>
+        
         <!-- Dripping paint effect -->
         <div class="drip" style="left: 10%; animation-delay: 0s;"></div>
         <div class="drip" style="left: 25%; animation-delay: 0.5s;"></div>
@@ -410,9 +413,6 @@
         <div class="message msg4">كل عام و أنتي احلى و أجمل S 🎂</div>
         <div class="message msg5">🎤 ليش انتي حلوه ؟</div>
         <div class="message msg6">✨ Spiritual Age: 22 ✨</div>
-
-        <!-- Music Control Button -->
-        <button id="music-toggle" class="music-control">🔊</button>
     </div>
 
     <!-- Audio Element -->
@@ -428,6 +428,8 @@
         const passwordBtn = document.getElementById('password-btn');
         const errorMsg = document.getElementById('error-msg');
         const bgMusic = document.getElementById('background-music');
+        const musicToggle = document.getElementById('music-toggle');
+        let isMusicPlaying = false;
 
         function checkPassword() {
             if (passwordInput.value === correctPassword) {
@@ -435,8 +437,13 @@
                 mainContent.style.display = 'block';
                 
                 // Play music
-                bgMusic.play().catch(error => {
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicToggle.textContent = '🔊';
+                }).catch(error => {
                     console.log("Audio autoplay was prevented:", error);
+                    isMusicPlaying = false;
+                    musicToggle.textContent = '🔇';
                 });
             } else {
                 errorMsg.style.display = 'block';
@@ -458,18 +465,18 @@
         });
 
         // Music toggle functionality
-        const musicToggle = document.getElementById('music-toggle');
-        let isMusicPlaying = true;
-
         musicToggle.addEventListener('click', function() {
             if (isMusicPlaying) {
                 bgMusic.pause();
                 musicToggle.textContent = '🔇';
                 isMusicPlaying = false;
             } else {
-                bgMusic.play();
-                musicToggle.textContent = '🔊';
-                isMusicPlaying = true;
+                bgMusic.play().then(() => {
+                    musicToggle.textContent = '🔊';
+                    isMusicPlaying = true;
+                }).catch(error => {
+                    console.log("Could not play audio:", error);
+                });
             }
         });
     </script>
