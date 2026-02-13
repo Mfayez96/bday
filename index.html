@@ -245,11 +245,12 @@
             }
 
             .center-piece {
-                top: 35%;
+                top: 40%;
+                padding: 0 10px;
             }
 
             .center-piece h1 {
-                font-size: 2.2em;
+                font-size: 2em;
                 line-height: 1.2;
             }
 
@@ -336,8 +337,12 @@
         }
 
         @media (max-width: 480px) {
+            .center-piece {
+                top: 38%;
+            }
+
             .center-piece h1 {
-                font-size: 1.8em;
+                font-size: 1.7em;
             }
 
             .floating-element {
@@ -436,15 +441,9 @@
                 passwordScreen.style.display = 'none';
                 mainContent.style.display = 'block';
                 
-                // Play music
-                bgMusic.play().then(() => {
-                    isMusicPlaying = true;
-                    musicToggle.textContent = '🔊';
-                }).catch(error => {
-                    console.log("Audio autoplay was prevented:", error);
-                    isMusicPlaying = false;
-                    musicToggle.textContent = '🔇';
-                });
+                // Do NOT autoplay - user must click the button
+                isMusicPlaying = false;
+                musicToggle.textContent = '🔇';
             } else {
                 errorMsg.style.display = 'block';
                 passwordInput.value = '';
