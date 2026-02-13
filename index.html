@@ -171,16 +171,31 @@
             100% { color: #ff6b9d; }
         }
 
-        .age-badge {
-            display: inline-block;
+        /* Music control button */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 20px 40px;
-            border-radius: 50px;
-            font-size: 2em;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            margin-top: 20px;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .music-control:active {
+            transform: scale(0.95);
         }
 
         /* Specific positioning for elements */
@@ -214,6 +229,8 @@
         .msg2 { top: 18%; right: 20%; font-size: 2em; direction: rtl; font-family: 'Cairo', sans-serif; }
         .msg3 { bottom: 12%; left: 30%; font-size: 1.6em; }
         .msg4 { bottom: 20%; right: 25%; font-size: 1.9em; direction: rtl; font-family: 'Cairo', sans-serif; }
+        .msg5 { top: 50%; left: 10%; font-size: 1.7em; direction: rtl; font-family: 'Cairo', sans-serif; }
+        .msg6 { top: 65%; right: 15%; font-size: 1.8em; }
 
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
@@ -234,12 +251,6 @@
             .center-piece h1 {
                 font-size: 2.2em;
                 line-height: 1.2;
-            }
-
-            .age-badge {
-                font-size: 1em;
-                padding: 12px 25px;
-                margin-top: 15px;
             }
 
             .floating-element {
@@ -279,6 +290,26 @@
                 font-size: 0.95em !important; 
                 max-width: 60%;
             }
+            .msg5 { 
+                top: 50%; 
+                left: 5%; 
+                font-size: 0.9em !important; 
+                max-width: 60%;
+            }
+            .msg6 { 
+                top: 65%; 
+                right: 5%; 
+                font-size: 0.95em !important; 
+                max-width: 60%;
+            }
+
+            .music-control {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2em;
+                bottom: 20px;
+                right: 20px;
+            }
 
             /* Hide some floating elements on mobile to reduce clutter */
             .element7, .element9, .element11, .element13, .element15,
@@ -307,11 +338,6 @@
         @media (max-width: 480px) {
             .center-piece h1 {
                 font-size: 1.8em;
-            }
-
-            .age-badge {
-                font-size: 0.9em;
-                padding: 10px 20px;
             }
 
             .floating-element {
@@ -350,7 +376,6 @@
         <!-- Center Piece -->
         <div class="center-piece">
             <h1>Happy Birthday S! 🎉</h1>
-            <div class="age-badge">✨ Spiritual Age: 22 ✨</div>
         </div>
 
         <!-- Floating Elements -->
@@ -360,29 +385,34 @@
         <div class="floating-element element4">👰</div>
         <div class="floating-element element5">🐱</div>
         <div class="floating-element element6">🍰</div>
-        <div class="floating-element element7">🎂</div>
+        <div class="floating-element element7">🍫</div>
         <div class="floating-element element8">🐈‍⬛</div>
-        <div class="floating-element element9">💕</div>
+        <div class="floating-element element9">🐱‍👤</div>
         <div class="floating-element element10">🍔</div>
-        <div class="floating-element element11">🎉</div>
+        <div class="floating-element element11">🍫</div>
         <div class="floating-element element12">🐱</div>
-        <div class="floating-element element13">✨</div>
-        <div class="floating-element element14">👰</div>
-        <div class="floating-element element15">🎊</div>
-        <div class="floating-element element16">🎂😷</div>
-        <div class="floating-element element17">🦸‍♀️</div>
-        <div class="floating-element element18">🦸‍♀️</div>
-        <div class="floating-element element19">🦸‍♀️</div>
-        <div class="floating-element element20">🐱‍👤</div>
-        <div class="floating-element element21">🐱‍👤</div>
-        <div class="floating-element element22">🖤🐈‍⬛</div>
-        <div class="floating-element element23">🖤🐈‍⬛</div>
+        <div class="floating-element element13">👰</div>
+        <div class="floating-element element14">🍅🐟</div>
+        <div class="floating-element element15">🍰</div>
+        <div class="floating-element element16">🍫</div>
+        <div class="floating-element element17">🐱‍👤</div>
+        <div class="floating-element element18">🍔</div>
+        <div class="floating-element element19">🐈‍⬛</div>
+        <div class="floating-element element20">🖤🐈‍⬛</div>
+        <div class="floating-element element21">👰</div>
+        <div class="floating-element element22">🍅🐟</div>
+        <div class="floating-element element23">🐱</div>
 
         <!-- Messages -->
         <div class="message msg1">Love you S 💖</div>
         <div class="message msg2">ثانكيو بيب 🌟</div>
         <div class="message msg3">Hottest person ever 🔥</div>
         <div class="message msg4">كل عام و أنتي احلى و أجمل S 🎂</div>
+        <div class="message msg5">🎤 ليش انتي حلوه ؟</div>
+        <div class="message msg6">✨ Spiritual Age: 22 ✨</div>
+
+        <!-- Music Control Button -->
+        <button id="music-toggle" class="music-control">🔊</button>
     </div>
 
     <!-- Audio Element -->
@@ -425,6 +455,22 @@
         // Hide error message when typing
         passwordInput.addEventListener('input', function() {
             errorMsg.style.display = 'none';
+        });
+
+        // Music toggle functionality
+        const musicToggle = document.getElementById('music-toggle');
+        let isMusicPlaying = true;
+
+        musicToggle.addEventListener('click', function() {
+            if (isMusicPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = '🔇';
+                isMusicPlaying = false;
+            } else {
+                bgMusic.play();
+                musicToggle.textContent = '🔊';
+                isMusicPlaying = true;
+            }
         });
     </script>
 </body>
