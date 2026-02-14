@@ -232,156 +232,45 @@
                 height: 50px;
             }
         }
-
-        /* Password screen */
-        #password-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-        }
-
-        .password-box {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
-
-        .password-box h2 {
-            font-family: 'Pacifico', cursive;
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 2em;
-        }
-
-        .password-box input {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            font-family: 'Quicksand', sans-serif;
-        }
-
-        .password-box button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            font-family: 'Quicksand', sans-serif;
-            transition: transform 0.2s;
-        }
-
-        .password-box button:hover {
-            transform: scale(1.05);
-        }
-
-        .error-message {
-            color: #ff1744;
-            margin-top: 10px;
-            font-size: 14px;
-        }
-
-        .hidden {
-            display: none;
-        }
     </style>
 </head>
 <body>
-    <!-- Password Screen -->
-    <div id="password-screen" class="hidden">
-        <div class="password-box">
-            <h2>🎂 Enter Password 🎂</h2>
-            <input type="password" id="password-input" placeholder="Enter password">
-            <button onclick="checkPassword()">Enter</button>
-            <p class="error-message hidden" id="error-message">Incorrect password. Try again!</p>
+    <!-- Animated background -->
+    <div class="animated-bg"></div>
+
+    <!-- Dripping colors -->
+    <div class="drip-container" id="drip-container"></div>
+
+    <!-- Content -->
+    <div class="content">
+        <div class="message-box">
+            <h1>Happy Birthday! 🎉</h1>
+            <p class="english-message">
+                Wishing you the most amazing birthday filled with love, laughter, and endless joy! 
+                May this year bring you everything your heart desires. You deserve all the happiness in the world! 🎂✨
+            </p>
+            <p class="arabic-message">
+                عيد ميلاد سعيد! أتمنى لك عامًا مليئًا بالفرح والنجاح والأحلام المحققة. أنت تستحق كل السعادة! 🌟💖
+            </p>
         </div>
     </div>
 
-    <!-- Main Content -->
-    <div id="main-content">
-        <!-- Animated background -->
-        <div class="animated-bg"></div>
-
-        <!-- Dripping colors -->
-        <div class="drip-container" id="drip-container"></div>
-
-        <!-- Content -->
-        <div class="content">
-            <div class="message-box">
-                <h1>Happy Birthday! 🎉</h1>
-                <p class="english-message">
-                    Wishing you the most amazing birthday filled with love, laughter, and endless joy! 
-                    May this year bring you everything your heart desires. You deserve all the happiness in the world! 🎂✨
-                </p>
-                <p class="arabic-message">
-                    عيد ميلاد سعيد! أتمنى لك عامًا مليئًا بالفرح والنجاح والأحلام المحققة. أنت تستحق كل السعادة! 🌟💖
-                </p>
-            </div>
-        </div>
-
-        <!-- Music control -->
-        <button class="music-control" onclick="toggleMusic()" id="music-btn">🔇</button>
-        
-        <!-- Background music -->
-        <audio id="bg-music" loop>
-            <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_4a39c84ec5.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+    <!-- Music control -->
+    <button class="music-control" onclick="toggleMusic()" id="music-btn">🔇</button>
+    
+    <!-- Background music -->
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/03/10/audio_4a39c84ec5.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
-        const correctPassword = "happy";
         let musicPlaying = false;
 
-        // Initialize animations immediately on page load
+        // Initialize animations on page load
         window.addEventListener('DOMContentLoaded', function() {
-            initializeAnimations();
-        });
-
-        function checkPassword() {
-            const input = document.getElementById('password-input').value;
-            const errorMsg = document.getElementById('error-message');
-            
-            if (input === correctPassword) {
-                document.getElementById('password-screen').classList.add('hidden');
-                document.getElementById('main-content').classList.remove('hidden');
-                initializeAnimations();
-            } else {
-                errorMsg.classList.remove('hidden');
-                document.getElementById('password-input').value = '';
-            }
-        }
-
-        // Allow Enter key to submit password
-        document.getElementById('password-input').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
-        });
-
-        function initializeAnimations() {
-            // Create dripping colors
             createDrips();
-            
-            // Create floating GIFs
             createFloatingGifs();
-        }
+        });
 
         function createDrips() {
             const colors = ['#ff6b9d', '#c06c84', '#f67280', '#355c7d', '#ff8c94', '#ffaaa5'];
