@@ -112,6 +112,19 @@
             50% { transform: scale(1.05); opacity: 1; }
         }
 
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            font-size: 2.5em;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(3px 3px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
         /* Center piece */
         .center-piece {
             position: absolute;
@@ -194,6 +207,18 @@
         .msg5 { top: 50%; left: 10%; font-size: 1.7em; direction: rtl; font-family: 'Cairo', sans-serif; }
         .msg6 { top: 65%; right: 15%; font-size: 1.8em; }
 
+        /* Specific positioning for floating elements */
+        .element1 { top: 10%; left: 15%; animation-delay: 0s; }
+        .element2 { top: 20%; right: 10%; animation-delay: 1s; }
+        .element3 { bottom: 15%; left: 20%; animation-delay: 2s; }
+        .element4 { bottom: 25%; right: 15%; animation-delay: 1.5s; }
+        .element5 { top: 40%; left: 5%; animation-delay: 0.5s; }
+        .element6 { top: 35%; right: 8%; animation-delay: 2.5s; }
+        .element7 { top: 60%; left: 12%; animation-delay: 1.8s; }
+        .element8 { top: 70%; right: 18%; animation-delay: 0.8s; }
+        .element9 { bottom: 30%; left: 8%; animation-delay: 1.3s; }
+        .element10 { top: 50%; right: 20%; animation-delay: 2.8s; }
+
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
             body {
@@ -218,6 +243,10 @@
             .center-piece img {
                 width: 200px;
                 margin-bottom: 20px;
+            }
+
+            .floating-element {
+                font-size: 1.5em;
             }
 
             .message {
@@ -255,6 +284,10 @@
                 margin-bottom: 15px;
             }
 
+            .floating-element {
+                font-size: 1.3em;
+            }
+
             .message {
                 font-size: 0.85em !important;
             }
@@ -264,6 +297,10 @@
 <body>
     <!-- Password Screen -->
     <div id="password-screen">
+        <img src="giphy.gif" 
+             onerror="this.src='https://media.giphy.com/media/g5R9dok94mrIvplmZd/giphy.gif';" 
+             alt="celebration" 
+             style="width: 200px; margin-bottom: 20px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);">
         <h2>🎂 Enter the Magic Words 🎂</h2>
         <input type="password" id="password-input" placeholder="Password..." />
         <button id="password-btn">Enter</button>
@@ -285,12 +322,24 @@
 
         <!-- Center Piece -->
         <div class="center-piece">
-            <!-- Try your local GIF first, if it doesn't work it will show the online GIF -->
-            <img src="giphy.gif" 
-                 onerror="this.src='https://media.giphy.com/media/g5R9dok94mrIvplmZd/giphy.gif';" 
+            <!-- Using giphy1.gif for the main birthday page -->
+            <img src="giphy1.gif" 
+                 onerror="this.src='https://media.giphy.com/media/kyLYXonQYYfwYDIeZl/giphy.gif';" 
                  alt="celebration gif">
             <h1>Happy Birthday سارونتي ! 🎉</h1>
         </div>
+
+        <!-- Floating Elements - Selected emojis only -->
+        <div class="floating-element element1">🐈‍⬛</div>
+        <div class="floating-element element2">🤍🐱</div>
+        <div class="floating-element element3">🍅</div>
+        <div class="floating-element element4">🍫</div>
+        <div class="floating-element element5">🎨</div>
+        <div class="floating-element element6">🐈‍⬛</div>
+        <div class="floating-element element7">🤍🐱</div>
+        <div class="floating-element element8">🍫</div>
+        <div class="floating-element element9">🎨</div>
+        <div class="floating-element element10">🍅</div>
 
         <!-- Messages -->
         <div class="message msg1">Love you Sarontee 💖</div>
